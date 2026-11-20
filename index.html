@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY FUTURE TECHNOLOGY | Interactive Grade 8 ICT</title>
+    
+    <style>
+        /* =========================================
+           1. COLOR VARIABLES (Day & Cyber Night Mode)
+        ========================================= */
+        :root {
+            --bg-color: #f0f6ff;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-heading: #003366;
+            --primary-blue: #007bff;
+            --dark-blue: #003366;
+            --accent-cyan: #00b4d8;
+            --fact-bg: #e0f2fe;
+            --shadow: 0 8px 20px rgba(0, 51, 102, 0.08);
+        }
+
+        /* Cyber Night Mode Theme */
+        body.cyber-mode {
+            --bg-color: #060d1f;
+            --card-bg: #0f1c3a;
+            --text-main: #e2e8f0;
+            --text-heading: #7dd3fc;
+            --primary-blue: #00d4ff;
+            --dark-blue: #020817;
+            --accent-cyan: #38bdf8;
+            --fact-bg: #1e3a8a;
+            --shadow: 0 8px 25px rgba(0, 212, 255, 0.15);
+        }
+
+        /* =========================================
+           2. RESET & BASE STYLES
+        ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* =========================================
+           3. NAVIGATION & XP BAR
+        ========================================= */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.4s ease;
+        }
+
+        .navbar {
+            max-width: 1150px;
+            margin: auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* XP & Theme Controls */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .xp-badge {
+            background: linear-gradient(90deg, #0056b3, #0096c7);
+            color: #ffffff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .theme-btn {
+            background-color: var(--fact-bg);
+            color: var(--text-heading);
+            border: 1px solid var(--primary-blue);
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-btn:hover {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        /* =========================================
+           4. HERO SECTION
+        ========================================= */
+        .hero {
+            background: linear-gradient(135deg, #002855 0%, #0077b6 50%, #00b4d8 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 85px 20px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.25);
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin: 20px 0 15px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: #90e0ef;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #e0f2fe;
+            min-height: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================================
+           5. BUTTONS & HOVER EFFECTS
+        ========================================= */
+        .btn {
+            padding: 12px 26px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn {
+            background-color: #ffffff;
+            color: #0056b3;
+        }
+
+        .primary-btn:hover {
+            background-color: #caf0f8;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .secondary-btn:hover {
+            background-color: #ffffff;
+            color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .info-btn {
+            background-color: #007bff;
+            color: #ffffff;
+            margin-top: 15px;
+            margin-right: 10px;
+        }
+
+        .info-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .like-btn {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            margin-top: 15px;
+            padding: 10px 20px;
+        }
+
+        .like-btn:hover, .like-btn.liked {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        /* =========================================
+           6. TECH TOPIC CARDS
+        ========================================= */
+        .container {
+            max-width: 1050px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .tech-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: var(--shadow);
+            border-left: 6px solid var(--primary-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
+        }
+
+        .tech-card.reverse {
+            flex-direction: row-reverse;
+            border-left: none;
+            border-right: 6px solid var(--primary-blue);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 123, 255, 0.2);
+        }
+
+        .card-image {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid #e0f2fe;
+            transition: transform 0.5s ease;
+        }
+
+        .tech-card:hover .card-image img {
+            transform: scale(1.06);
+        }
+
+        .card-content {
+            flex: 1.2;
+        }
+
+        .card-content h2 {
+            color: var(--text-heading);
+            margin-bottom: 12px;
+            font-size: 1.7rem;
+        }
+
+        .fun-fact {
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--text-heading);
+            background-color: var(--fact-bg);
+            padding: 0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .fun-fact.active {
+            padding: 12px 16px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        /* =========================================
+           7. INTERACTIVE ZONE (POLL & QUIZ)
+        ========================================= */
+        .interactive-zone {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .box-panel {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-top: 6px solid var(--primary-blue);
+        }
+
+        .box-panel h2 {
+            color: var(--text-heading);
+            margin-bottom: 10px;
+        }
+
+        /* Poll Bars */
+        .poll-option {
+            margin: 15px 0;
+        }
+
+        .poll-btn {
+            width: 100%;
+            text-align: left;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: 2px solid var(--primary-blue);
+            background-color: transparent;
+            color: var(--text-main);
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .poll-btn:hover {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        .progress-bg {
+            background-color: #dbeafe;
+            height: 10px;
+            border-radius: 10px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0056b3, #00b4d8);
+            height: 100%;
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        /* Quiz Styling */
+        .quiz-question {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 15px 0;
+            color: var(--text-heading);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-opt-btn {
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #93c5fd;
+            background-color: var(--fact-bg);
+            color: var(--text-main);
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.2s;
+        }
+
+        .quiz-opt-btn:hover {
+            border-color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+
+        .quiz-opt-btn.correct {
+            background-color: #bbf7d0;
+            border-color: #16a34a;
+            color: #14532d;
+        }
+
+        .quiz-opt-btn.wrong {
+            background-color: #fecaca;
+            border-color: #dc2626;
+            color: #7f1d1d;
+        }
+
+        #quiz-feedback {
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 24px;
+        }
+
+        /* =========================================
+           8. FOOTER & ANIMATIONS
+        ========================================= */
+        footer {
+            background-color: #002855;
+            color: #ffffff;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 60px;
+        }
+
+        .top-btn {
+            background-color: #007bff;
+            color: #ffffff;
+            margin-top: 15px;
+            padding: 10px 24px;
+            font-size: 0.95rem;
+        }
+
+        .top-btn:hover {
+            background-color: #38bdf8;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* =========================================
+           9. RESPONSIVE DESIGN (Mobile Phones)
+        ========================================= */
+        @media (max-width: 850px) {
+            .interactive-zone {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: var(--card-bg);
+                position: absolute;
+                top: 65px;
+                right: 20px;
+                width: 220px;
+                padding: 15px;
+                border-radius: 12px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .tech-card, .tech-card.reverse {
+                flex-direction: column;
+                border-left: none;
+                border-right: none;
+                border-top: 6px solid var(--primary-blue);
+            }
+
+            .card-image img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">MY FUTURE <span>TECH</span></div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#ai">AI</a></li>
+                <li><a href="#robotics">Robotics</a></li>
+                <li><a href="#smart-cities">Smart Cities</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#communication">Communication</a></li>
+                <li><a href="#fun-zone">Quiz & Poll</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <div class="xp-badge" id="xpDisplay">⭐ 0 XP | Tech Rookie</div>
+                <button class="theme-btn" id="themeToggle">🌙 Cyber Mode</button>
+                <div class="menu-toggle" id="mobileMenu">☰</div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero / Homepage Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="badge">🚀 Grade 8 ICT Interactive Hub</span>
+            <h1>Welcome to <br><span>MY FUTURE TECHNOLOGY</span></h1>
+            <p id="welcome-text"></p>
+            <div class="hero-buttons">
+                <a href="#ai" class="btn primary-btn">Explore & Earn XP</a>
+                <button id="greetBtn" class="btn secondary-btn">👤 Set Student Name</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="container">
+
+        <!-- 1. Artificial Intelligence -->
+        <section id="ai" class="tech-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80" alt="Artificial Intelligence">
+            </div>
+            <div class="card-content">
+                <h2>01. Artificial Intelligence (AI)</h2>
+                <p>Artificial Intelligence allows computers and machines to think, learn, and solve problems just like humans. In the future, AI will help doctors cure diseases faster, assist students with personalized tutoring, and automate everyday tasks.</p>
+                <button class="btn info-btn" onclick="showFact('ai')">💡 Reveal Fun Fact (+10 XP)</button>
+                <button class="btn like-btn" onclick="likeTopic(this, 'AI')">👍 Cool Tech!</button>
+                <p id="fact-ai" class="fun-fact"></p>
+            </div>
+        </section>
+
+        <!-- 2. Robotics -->
+        <section id="robotics" class="tech-card reverse">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80" alt="Futuristic Robot">
+            </div>
+            <div class="card-content">
+                <h2>02. Advanced Robotics</h2>
+                <p>Future robots will work alongside humans in hospitals, space exploration, and disaster rescue missions. Equipped with smart sensors and flexible designs, robots will perform dangerous jobs safely and accurately.</p>
+                <button class="btn info-btn" onclick="showFact('robotics')">💡 Reveal Fun Fact (+10 XP)</button>
+                <button class="btn like-btn" onclick="likeTopic(this, 'Robotics')">👍 Cool Tech!</button>
+                <p id="fact-robotics" class="fun-fact"></p>
+            </div>
+        </section>
+
+        <!-- 3. Smart Cities -->
+        <section id="smart-cities" class="tech-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Smart City Technology">
+            </div>
+            <div class="card-content">
+                <h2>03. Smart Cities</h2>
+                <p>Smart cities use sensors and the Internet of Things (IoT) to manage traffic, save electricity, and reduce pollution. Imagine self-driving electric buses, solar-powered roads, and buildings that automatically adjust their temperature.</p>
+                <button class="btn info-btn" onclick="showFact('cities')">💡 Reveal Fun Fact (+10 XP)</button>
+                <button class="btn like-btn" onclick="likeTopic(this, 'Smart Cities')">👍 Cool Tech!</button>
+                <p id="fact-cities" class="fun-fact"></p>
+            </div>
+        </section>
+
+        <!-- 4. Future Education -->
+        <section id="education" class="tech-card reverse">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80" alt="Virtual Reality Education">
+            </div>
+            <div class="card-content">
+                <h2>04. Future Education</h2>
+                <p>Classrooms of the future will go beyond textbooks! Using Virtual Reality (VR) and Augmented Reality (AR), students will take virtual field trips to Mars, explore inside the human body in 3D, and collaborate with classmates around the globe.</p>
+                <button class="btn info-btn" onclick="showFact('education')">💡 Reveal Fun Fact (+10 XP)</button>
+                <button class="btn like-btn" onclick="likeTopic(this, 'Future Education')">👍 Cool Tech!</button>
+                <p id="fact-education" class="fun-fact"></p>
+            </div>
+        </section>
+
+        <!-- 5. Future Communication -->
+        <section id="communication" class="tech-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Global Communication Network">
+            </div>
+            <div class="card-content">
+                <h2>05. Future Communication</h2>
+                <p>With ultra-fast 6G networks, satellite internet, and holographic calls, distance will no longer matter. Real-time AI language translators will also let people speak different languages and understand each other instantly.</p>
+                <button class="btn info-btn" onclick="showFact('communication')">💡 Reveal Fun Fact (+10 XP)</button>
+                <button class="btn like-btn" onclick="likeTopic(this, 'Future Communication')">👍 Cool Tech!</button>
+                <p id="fact-communication" class="fun-fact"></p>
+            </div>
+        </section>
+
+        <!-- Interactive Fun Zone: Poll & Mini Quiz -->
+        <section id="fun-zone" class="interactive-zone">
+            
+            <!-- Left Panel: Future Tech Vote -->
+            <div class="box-panel">
+                <h2>📊 Class Tech Poll</h2>
+                <p>Which future technology excites you the most? Click to vote (+15 XP)!</p>
+                
+                <div class="poll-option">
+                    <button class="poll-btn" onclick="votePoll('ai')">🤖 Artificial Intelligence & Robots (<span id="pct-ai">35%</span>)</button>
+                    <div class="progress-bg"><div class="progress-fill" id="bar-ai" style="width: 35%;"></div></div>
+                </div>
+
+                <div class="poll-option">
+                    <button class="poll-btn" onclick="votePoll('vr')">🥽 VR Classrooms & Holograms (<span id="pct-vr">40%</span>)</button>
+                    <div class="progress-bg"><div class="progress-fill" id="bar-vr" style="width: 40%;"></div></div>
+                </div>
+
+                <div class="poll-option">
+                    <button class="poll-btn" onclick="votePoll('city')">🏙️ Flying Cars & Smart Cities (<span id="pct-city">25%</span>)</button>
+                    <div class="progress-bg"><div class="progress-fill" id="bar-city" style="width: 25%;"></div></div>
+                </div>
+                <p id="poll-msg" style="margin-top:10px; font-weight:bold; color:var(--primary-blue);"></p>
+            </div>
+
+            <!-- Right Panel: Grade 8 ICT Mini-Quiz -->
+            <div class="box-panel">
+                <h2>🎮 Future Tech Challenge</h2>
+                <p>Test your knowledge to earn bonus XP!</p>
+                
+                <div id="quiz-container">
+                    <div class="quiz-question" id="q-text">Loading question...</div>
+                    <div class="quiz-options" id="q-options"></div>
+                    <div id="quiz-feedback"></div>
+                    <button class="btn info-btn" id="next-q-btn" style="display:none;" onclick="nextQuestion()">Next Question ➔</button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 MY FUTURE TECHNOLOGY | Interactive Learning Project for Grade 8 ICT</p>
+        <button id="backToTop" class="btn top-btn">↑ Blast Back to Top</button>
+    </footer>
+
+    <!-- =========================================
+         JAVASCRIPT INTERACTIVITY
+    ========================================= -->
+    <script>
+        // --- 1. XP & LEVEL SYSTEM ---
+        let xp = 0;
+        const unlockedActions = new Set();
+
+        function addXP(points, actionKey) {
+            if (!unlockedActions.has(actionKey)) {
+                unlockedActions.add(actionKey);
+                xp += points;
+                
+                let rank = "Tech Rookie";
+                if (xp >= 100) rank = "Cyber Master 🏆";
+                else if (xp >= 50) rank = "Future Innovator 🚀";
+                else if (xp >= 20) rank = "Digital Explorer ⚡";
+
+                document.getElementById("xpDisplay").textContent = `⭐ ${xp} XP | ${rank}`;
+            }
+        }
+
+        // --- 2. TYPEWRITER WELCOME EFFECT ---
+        const defaultWelcome = "Exploring the innovations that will shape tomorrow's world.";
+        const welcomeText = document.getElementById("welcome-text");
+        let charIndex = 0;
+
+        function typeWriter(text) {
+            welcomeText.textContent = "";
+            charIndex = 0;
+            function type() {
+                if (charIndex < text.length) {
+                    welcomeText.textContent += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 30);
+                }
+            }
+            type();
+        }
+        window.onload = () => {
+            typeWriter(defaultWelcome);
+            loadQuiz();
+        };
+
+        // --- 3. STUDENT NAME GREETING ---
+        const greetBtn = document.getElementById("greetBtn");
+        greetBtn.addEventListener("click", function() {
+            let studentName = prompt("Hello Grade 8 Student! Enter your name:");
+            if (studentName && studentName.trim() !== "") {
+                typeWriter(`Welcome, ${studentName}! Your futuristic ICT mission starts now.`);
+                greetBtn.textContent = `👤 Student: ${studentName}`;
+                addXP(10, "set-name");
+            }
+        });
+
+        // --- 4. CYBER NIGHT MODE TOGGLE ---
+        const themeToggle = document.getElementById("themeToggle");
+        themeToggle.addEventListener("click", function() {
+            document.body.classList.toggle("cyber-mode");
+            if (document.body.classList.contains("cyber-mode")) {
+                themeToggle.textContent = "☀️ Day Mode";
+            } else {
+                themeToggle.textContent = "🌙 Cyber Mode";
+            }
+        });
+
+        // --- 5. FUN FACTS & LIKE BUTTONS ---
+        function showFact(topic) {
+            const facts = {
+                ai: "💡 Fun Fact: Modern AI can analyze thousands of medical X-rays in just a few seconds!",
+                robotics: "🤖 Fun Fact: The word 'Robot' comes from the Czech word 'robota', meaning forced labor.",
+                cities: "🏙️ Fun Fact: Smart streetlights brighten only when sensors detect a car or person nearby, saving massive electricity!",
+                education: "🥽 Fun Fact: Students remember up to 75% more information when learning through Virtual Reality simulations.",
+                communication: "📡 Fun Fact: Future 6G networks are expected to be up to 100 times faster than 5G!"
+            };
+
+            const factBox = document.getElementById("fact-" + topic);
+            if (factBox.textContent === "") {
+                factBox.textContent = facts[topic];
+                factBox.classList.add("active");
+                addXP(10, "fact-" + topic);
+            } else {
+                factBox.textContent = "";
+                factBox.classList.remove("active");
+            }
+        }
+
+        function likeTopic(btn, topicName) {
+            btn.classList.toggle("liked");
+            if (btn.classList.contains("liked")) {
+                btn.textContent = "❤️ Liked!";
+                addXP(5, "like-" + topicName);
+            } else {
+                btn.textContent = "👍 Cool Tech!";
+            }
+        }
+
+        // --- 6. INTERACTIVE POLL ---
+        let votes = { ai: 7, vr: 8, city: 5 };
+        let hasVoted = false;
+
+        function votePoll(choice) {
+            if (!hasVoted) {
+                votes[choice]++;
+                hasVoted = true;
+                addXP(15, "poll-vote");
+                document.getElementById("poll-msg").textContent = "✅ Vote recorded! Thanks for participating!";
+            } else {
+                document.getElementById("poll-msg").textContent = "You already cast your vote!";
+            }
+
+            let total = votes.ai + votes.vr + votes.city;
+            let pAi = Math.round((votes.ai / total) * 100);
+            let pVr = Math.round((votes.vr / total) * 100);
+            let pCity = 100 - pAi - pVr;
+
+            document.getElementById("pct-ai").textContent = pAi + "%";
+            document.getElementById("bar-ai").style.width = pAi + "%";
+
+            document.getElementById("pct-vr").textContent = pVr + "%";
+            document.getElementById("bar-vr").style.width = pVr + "%";
+
+            document.getElementById("pct-city").textContent = pCity + "%";
+            document.getElementById("bar-city").style.width = pCity + "%";
+        }
+
+        // --- 7. MINI QUIZ ---
+        const quizData = [
+            {
+                q: "1. What technology allows Smart Cities to connect sensors and devices?",
+                options: ["Internet of Things (IoT)", "Floppy Disks", "Typewriters"],
+                answer: 0
+            },
+            {
+                q: "2. Which technology lets students take virtual field trips to Mars?",
+                options: ["Virtual Reality (VR)", "Microwave Waves", "Bluetooth 1.0"],
+                answer: 0
+            },
+            {
+                q: "3. What ultra-fast wireless network will power holographic calls?",
+                options: ["Dial-Up", "6G Network", "3G Network"],
+                answer: 1
+            }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function loadQuiz() {
+            const qObj = quizData[currentQ];
+            document.getElementById("q-text").textContent = qObj.q;
+            const optBox = document.getElementById("q-options");
+            optBox.innerHTML = "";
+            document.getElementById("quiz-feedback").textContent = "";
+            document.getElementById("next-q-btn").style.display = "none";
+
+            qObj.options.forEach((opt, index) => {
+                const btn = document.createElement("button");
+                btn.className = "quiz-opt-btn";
+                btn.textContent = opt;
+                btn.onclick = () => checkAnswer(btn, index);
+                optBox.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedBtn, index) {
+            const qObj = quizData[currentQ];
+            const allBtns = document.querySelectorAll(".quiz-opt-btn");
+            allBtns.forEach(b => b.disabled = true);
+
+            if (index === qObj.answer) {
+                selectedBtn.classList.add("correct");
+                document.getElementById("quiz-feedback").textContent = "🎉 Correct! +20 XP!";
+                document.getElementById("quiz-feedback").style.color = "#16a34a";
+                score++;
+                addXP(20, "quiz-" + currentQ);
+            } else {
+                selectedBtn.classList.add("wrong");
+                allBtns[qObj.answer].classList.add("correct");
+                document.getElementById("quiz-feedback").textContent = "❌ Not quite! Check the green answer.";
+                document.getElementById("quiz-feedback").style.color = "#dc2626";
+            }
+
+            document.getElementById("next-q-btn").style.display = "inline-block";
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if (currentQ < quizData.length) {
+                loadQuiz();
+            } else {
+                document.getElementById("quiz-container").innerHTML = `
+                    <h3>🏆 Quiz Complete!</h3>
+                    <p style="margin: 15px 0; font-size: 1.1rem;">You scored <strong>${score} out of ${quizData.length}</strong>!</p>
+                    <button class="btn info-btn" onclick="restartQuiz()">🔄 Play Again</button>
+                `;
+            }
+        }
+
+        function restartQuiz() {
+            currentQ = 0;
+            score = 0;
+            document.getElementById("quiz-container").innerHTML = `
+                <div class="quiz-question" id="q-text"></div>
+                <div class="quiz-options" id="q-options"></div>
+                <div id="quiz-feedback"></div>
+                <button class="btn info-btn" id="next-q-btn" style="display:none;" onclick="nextQuestion()">Next Question ➔</button>
+            `;
+            loadQuiz();
+        }
+
+        // --- 8. MOBILE MENU & BACK TO TOP ---
+        document.getElementById("mobileMenu").addEventListener("click", () => {
+            document.getElementById("navLinks").classList.toggle("show");
+        });
+
+        document.getElementById("backToTop").addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+
+</body>
+</html>
